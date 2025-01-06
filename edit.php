@@ -70,12 +70,7 @@ if (isset($_GET['id'])) {
     }
   }
   $htmlCategories = putCategorySelect('./data/categories.json', $idVal);
-  // have a list of <option></option> of category in HTML
   $htmlStatus = putStatusSelect(STATUS_CONFIG, $currentStatus);
-  // have a list of <option></option> of status in HTML
-
-  // include name , what it has and its errors
-  // category , status, question, answer
   $formElements = [
     [
       'label' => renderLabel('Category'),

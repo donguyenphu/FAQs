@@ -59,7 +59,6 @@ function readJsonToArray($jsonFile)
 function putCategorySelect($filePath, $selectedValue)
 {
     $htmlCategories = '';
-    // $categoriesArray = readJsonToArray('./data/categories.json');
     $categoriesArray = readJsonToArray($filePath);
     foreach ($categoriesArray as $key => $value) {
         $selected = $value['id'] == $selectedValue ? 'selected' : '';

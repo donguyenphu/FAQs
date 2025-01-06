@@ -1,29 +1,7 @@
 <?php
 require_once 'functions.php';
-
-// require FAQManagement
-// khởi tạo đối tượng FAQManagement(duong dan den file json)
-// gọi phương thức getItems() -> lấy ra danh sách
-/*
-   render: 
-   s1: lay thong tin tu categories & FAQS -> array
-      -JSONdecode 
-      -
-      xong 
-   s2: duyet mang va tao ra chuoi html
-   s3: hien thi vao khu vuc tbody
-*/
-/*
-kiem tra xem co tham so search $_GET['search'];
-loc danh sach theo tu khoa nguoi dung da nhap -> tim theo question
-*/
 ?>
 <?php
-// basic first
-/**
- * huong search: check status || category: neu 1 trong 2 cai khong tick gi-> error 
- * huong edit: answer : 10-20, category, status changed (if not, remained)
- */
 require_once 'define.php';
 require_once 'functions.php';
 $categoriesInfo = file_get_contents('./data/categories.json');
@@ -31,17 +9,10 @@ $categoriesArray = json_decode($categoriesInfo, true);
 $FAQ = file_get_contents('./data/FAQs.json');
 $FAQarray = json_decode($FAQ, true);
 $FAQarrayFilter = $FAQarray;
-
 $search = $_GET['search'] ?? '';
 $categoriesAll = $_GET['categories'] ?? [];
 $statusAll = $_GET['status'] ?? [];
-
-// lay danh sach nhung ban ten "phu" co gioi tinh "nam"
-// 1. lay ra danh sach nhung ban ten phu tu arrayGoc -> array1
-// 2. lay ra danh sach nhung ban co gioi tinh nam tu array1 -> array2
 if (!empty($search)) {
-  // 3 dieu kien de loc
-  // nguoi dung co the chon 0,1,2,3 dieu kien
   foreach ($FAQarrayFilter as $key => $value) {
     if (!str_contains(strtolower($value['question']), strtolower($search))) {
       unset($FAQarrayFilter[$key]);
@@ -67,7 +38,6 @@ foreach ($FAQarrayFilter as $key => $value) {
   $idVal = $value['id'];
   $quest = $value['question'];
   if (!empty($search)) {
-    // echo $search.'</br>';
     $tmp = $quest;
     $quest = highlightKeywords($tmp, $search);
   }
@@ -98,9 +68,7 @@ foreach ($FAQarrayFilter as $key => $value) {
       </td>
     </tr>';
 }
-// status
 $htmlStatus = renderFilterStatusCheckbox(STATUS_CONFIG, $statusAll);
-// categories
 $htmlCategories = renderFilterCategoryCheckbox($categoriesArray, $categoriesAll);
 ?>
 <!DOCTYPE html>
@@ -114,18 +82,15 @@ $htmlCategories = renderFilterCategoryCheckbox($categoriesArray, $categoriesAll)
   <link rel="stylesheet" href="./assets/STYLES.css" />
   <style>
     @import url('https://rsms.me/inter/inter.css');
-
     :root {
       --tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto,
         Helvetica Neue, sans-serif;
     }
-
     body {
       font-feature-settings: 'cv03', 'cv04', 'cv11';
     }
   </style>
 </head>
-
 <body>
   <div class="container py-3">
     <h1 class="text-center">FAQs</h1>
@@ -224,51 +189,6 @@ $htmlCategories = renderFilterCategoryCheckbox($categoriesArray, $categoriesAll)
               </thead>
               <tbody>
                 <?php echo $htmlSearch; ?>
-                <!-- <tr>
-                <td class="w-1">
-                  <input class="form-check-input" type="checkbox" />
-                </td>
-                <td>Ekk7d</td>
-                <td>What Shipping Methods Are Available?</td>
-                <td>SHIPPING</td>
-                <td>
-                  <span class="badge bg-secondary text-secondary-fg">Draft</span>
-                </td>
-                <td class="text-nowrap">
-                  <button href="#" class="btn btn-sm btn-primary">Edit</button>
-                  <button class="btn btn-sm btn-danger" type="button">Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <td class="w-1">
-                  <input class="form-check-input" type="checkbox" />
-                </td>
-                <td>lKz4x</td>
-                <td>What Payment Methods Are Accepted?</td>
-                <td>PAYMENT</td>
-                <td>
-                  <span class="badge bg-success text-success-fg">Published</span>
-                </td>
-                <td class="text-nowrap">
-                  <button href="#" class="btn btn-sm btn-primary">Edit</button>
-                  <button class="btn btn-sm btn-danger" type="button">Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <td class="w-1">
-                  <input class="form-check-input" type="checkbox" />
-                </td>
-                <td>t01EL</td>
-                <td>How Can I Cancel Or Change My Order?</td>
-                <td>ORDER & RETURNS</td>
-                <td>
-                  <span class="badge bg-warning text-warning-fg">Pending</span>
-                </td>
-                <td class="text-nowrap">
-                  <button href="#" class="btn btn-sm btn-primary">Edit</button>
-                  <button class="btn btn-sm btn-danger" type="button">Delete</button>
-                </td>
-              </tr> -->
               </tbody>
             </table>
           </div>
