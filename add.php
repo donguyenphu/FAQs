@@ -1,21 +1,4 @@
 <?php
-// require FAQManagement
-// khởi tạo đối tượng FAQManagement(duong dan den file json)
-/*
-  form: category, status, question, answer
-  Kiem tra form duoc submit hay chua
-    -b1: lay du lieu $_POST
-    -b2: Tao ra array chua tat ca thong tin mot faq: id, question, answer, status, categoryId
-    -b3: Them noi dung moi vao FAQs.json
-      3.1. Doc du lieu tu FAQs.json -> array
-      3.2. Them phan tu moi (b2) vao array
-      3.3. Chuyen array -> json
-      3.4. Ghi noi dung json vao file FAQs.json
-    -b4: chuyen huong ve index.php
-  (-b4: trong index, render)
-*/
-
-// du lieu hop le
 require_once 'functions.php';
 require_once 'define.php';
 $categoryId = '';
@@ -55,8 +38,6 @@ if (isset($_POST['category_id']) && isset($_POST['status']) && isset($_POST['que
 
 
   if ($errorAnswer == '' && $errorQuestion == '' && $errorCategory == '' && $errorStatus == '') {
-    // tạo ra một đối tượng FAQ
-    // gọi phương thức createItem(đối tượng FAQ)
 
     $FAQarray = readJsonToArray('./data/FAQs.json');
     array_push($FAQarray, $newFaq);
@@ -76,10 +57,7 @@ if (isset($_POST['category_id']) && isset($_POST['status']) && isset($_POST['que
 }
 
 $htmlCategories = putCategorySelect('./data/categories.json', $categoryId);
-// have a list of <option></option> of category in HTML
 $htmlStatus = putStatusSelect(STATUS_CONFIG, $status);
-// have a list of <option></option> of status in HTML
-
 
 // template starts
 $formElements = [
@@ -107,9 +85,6 @@ $formElements = [
 $htmlForm = '';
 foreach ($formElements as $key => $value) {
   $htmlForm .= sprintf('<div class="mb-3 col-12">%s %s %s</div>', $value['label'], $value['element'], $value['error']);
-  // $value['label']
-  // $value['element']
-  // $value['error']
 }
 
 // template ends
