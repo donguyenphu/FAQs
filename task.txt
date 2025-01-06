@@ -1,0 +1,18 @@
+- multi delete (DONE)
+- add, edit: bo sung ham tao ra cac select option (DONE) (toi da 2 functions)
+- kiem tra du lieu
+    + question: khong duoc rong, do dai tu 10 - 255 (DONE)
+    + answer: khong duoc rong, do dai tu 25 - 500 (DONE)
+- what : search with any form, keep the original word (NOT)
+
+
+draft:
+
+ <!-- <option value="published" <?php echo (strtolower($currentStatus) == "published" ? 'selected' : ''); ?>>Published</option>
+<option value="draft" <?php echo (strtolower($currentStatus) == "draft" ? 'selected' : ''); ?>>Draft</option>
+<option value="pending" <?php echo (strtolower($currentStatus) == "pending" ? 'selected' : ''); ?>>Pending</option> -->
+
+<!-- put select in option -->
+<!-- <option value="1" <?php echo ($idVal == 1 ? 'selected' : ''); ?>>SHIPPING</option>
+<option value="2" <?php echo ($idVal == 2 ? 'selected' : ''); ?>>PAYMENT</option>
+<option value="3" <?php echo ($idVal == 3 ? 'selected' : ''); ?>>ORDER & RETURNS</option> -->
