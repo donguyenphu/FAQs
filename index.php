@@ -148,8 +148,6 @@ $htmlCategories = renderFilterCategoryCheckbox($categoriesArray, $categoriesAll)
           <div class="col-12">
             <div class="d-flex flex-wrap flex-md-nowrap align-items-center gap-1">
               <div class="input-group">
-                <!-- search function comes here -->
-                <!-- name: search -->
                 <input type="text" name="search" class="form-control" placeholder="Search ..." value="<?php echo $search; ?>" />
                 <input class="btn" type="submit" value="Submit" />
                 <a class="btn" href="index.php">Clear</a>
