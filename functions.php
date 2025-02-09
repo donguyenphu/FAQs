@@ -22,7 +22,7 @@ function getStatusClass($status)
     }
     return $statusClass;
 }
-
+        
 function renderFilterStatusCheckbox($statusConfig, $selectedArr)
 {
     $htmlStatus = '';

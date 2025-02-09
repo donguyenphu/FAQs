@@ -127,7 +127,7 @@ foreach ($formElements as $key => $value) {
                 <?= $htmlForm ?>
               </div>
               <button type="submit" class="btn btn-primary">Save</button>
-              <button type="button" class="btn">Cancel</button>
+              <a type="button" class="btn">Cancel</a>
             </div>
           </div>
         </form>
