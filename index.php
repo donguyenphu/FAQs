@@ -176,9 +176,9 @@ $htmlCategories = renderFilterCategoryCheckbox($categoriesArray, $categoriesAll)
               <thead>
                 <tr>
                   <th>
-                    <input class="form-check-input" type="checkbox" />
+                    <input class="form-check-input" type="checkbox" name="clearAllIDs" />
                   </th>
-                  <th>ID</th>
+                  <th>Delete All IDs</th>
                   <th>Question</th>
                   <th>Category</th>
                   <th>Status</th>
